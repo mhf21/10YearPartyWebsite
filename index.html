@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en" data-palette="sunset">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mei &amp; Matthew · Ten Years · Honolulu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ---------- Palettes (light) ---------- */
+:root{
+  --serif:"Gilda Display", Georgia, "Times New Roman", serif;
+  --sans:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --surface:#FFFFFF; --on-deep:#FFF8F4;
+}
+/* Lei Day: hibiscus, ʻilima gold, ti-leaf green. May 1 is Lei Day in Hawaiʻi. */
+:root[data-palette="leiday"]{--bg:#FFF6F3;--ink:#3A1F2B;--muted:#7A5A64;--deep:#8E2348;--accent:#2F6B4F;--glow:#F2A93B;--soft:#FBE0D8;--line:#F0D9D2;--flower:#FFE7A8}
+/* Lagoon: Waikīkī water at noon */
+:root[data-palette="lagoon"]{--bg:#F2F8F9;--ink:#0F2F3D;--muted:#4F6E7A;--deep:#0B4F6C;--accent:#178A86;--glow:#F4D58D;--soft:#D4EFEE;--line:#D3E5E8;--flower:#FFFFFF}
+/* Reef: shallow turquoise water over white sand */
+:root[data-palette="reef"]{--bg:#F5FBFB;--ink:#12343B;--muted:#557178;--deep:#137C8B;--accent:#0E6E7A;--glow:#FFF1C9;--soft:#D9F3F1;--line:#D5E9EA;--flower:#FFFFFF}
+/* Deep Pacific: open ocean at dusk */
+:root[data-palette="pacific"]{--bg:#F3F6FA;--ink:#14243B;--muted:#56657A;--deep:#13294B;--accent:#2A6F97;--glow:#9AD1D4;--soft:#DCE8F2;--line:#D7E0EA;--flower:#CDEBF0}
+/* Monstera: rainforest greens and banana-leaf light */
+:root[data-palette="monstera"]{--bg:#F4F6EE;--ink:#1D2B22;--muted:#5B6B5F;--deep:#1E3B2C;--accent:#3E7D4F;--glow:#EAC54F;--soft:#E1EAD3;--line:#DCE3D3;--flower:#F6F1DC}
+/* Sunset: Diamond Head at golden hour */
+:root[data-palette="sunset"]{--bg:#FFF7F1;--ink:#2B1E3F;--muted:#6E5D7E;--deep:#3A2556;--accent:#C2456E;--glow:#F4A259;--soft:#FCE3D6;--line:#EFDCD6;--flower:#FFD3A8}
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#151217;--surface:#1E1A21;--ink:#F1E9EC;--muted:#B5A6AD;--line:#332B34;--soft:#2A2229}
+  :root:not([data-theme="light"])[data-palette="reef"]{--bg:#0A1E22;--surface:#10292E;--ink:#E4F1F1;--muted:#9BB9BC;--line:#1E4046;--soft:#123338;--accent:#5CCFD3;--deep:#0F5F6B}
+  :root:not([data-theme="light"])[data-palette="pacific"]{--bg:#0B1524;--surface:#111F33;--ink:#E5ECF4;--muted:#9AABC0;--line:#203450;--soft:#14263D;--accent:#7FB8DA}
+  :root:not([data-theme="light"])[data-palette="lagoon"]{--bg:#0B1F24;--surface:#112A30;--ink:#E6EEEC;--muted:#9DB4B8;--line:#22424A;--soft:#143238;--accent:#5FC1BB}
+  :root:not([data-theme="light"])[data-palette="monstera"]{--bg:#111A14;--surface:#18241C;--ink:#E7EEE6;--muted:#A3B3A6;--line:#28392D;--soft:#1D2D22;--accent:#7DBE8C}
+  :root:not([data-theme="light"])[data-palette="leiday"]{--accent:#7FC29E}
+  :root:not([data-theme="light"])[data-palette="sunset"]{--accent:#F07FA3}
+}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#151217;--surface:#1E1A21;--ink:#F1E9EC;--muted:#B5A6AD;--line:#332B34;--soft:#2A2229}
+
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;transition:background .3s}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+.ph{background:var(--soft);border-radius:4px;padding:0 4px}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--deep)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--deep);color:var(--on-deep)}
+nav.top .inner{max-width:1080px;margin:0 auto;display:flex;gap:4px;align-items:center;padding:10px 20px;overflow-x:auto}
+nav.top .mark{font-family:var(--serif);font-size:20px;margin-right:auto;white-space:nowrap;padding-right:16px}
+nav.top a{color:var(--on-deep);text-decoration:none;font-size:15px;padding:6px 10px;border-radius:6px;white-space:nowrap;opacity:.85}
+nav.top a:hover{opacity:1;background:rgba(255,255,255,.1)}
+nav.top a.planner-link{border:1px solid var(--glow);color:var(--glow);display:none}
+body.owner nav.top a.planner-link{display:inline-block}
+
+/* ---------- Hero ---------- */
+header.hero{background:var(--deep);color:var(--on-deep);position:relative;overflow:hidden}
+.hero .inner{max-width:1080px;margin:0 auto;padding:76px 20px 130px;display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:end;position:relative;z-index:1}
+.hero .names{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);margin:0 0 14px;color:var(--glow)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,88px);line-height:1.02;margin:0 0 20px;letter-spacing:-.01em}
+.hero .when{font-size:17px;opacity:.85;margin:0}
+.countdown{display:flex;gap:22px;justify-self:end}
+.countdown div{text-align:center}
+.countdown b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--glow)}
+.countdown span{font-size:13px;opacity:.75}
+.lei{position:absolute;right:-60px;top:-60px;width:min(46vw,460px);opacity:.16;z-index:0;pointer-events:none}
+.hero svg.tide{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:80px;display:block}
+
+main{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,44px);margin:0 0 10px;line-height:1.1}
+h3.sub{font-family:var(--serif);font-weight:400;font-size:26px;margin:40px 0 16px}
+.lede{color:var(--muted);max-width:62ch;margin:0 0 36px}
+
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.timeline .day{font-family:var(--serif);font-size:22px;line-height:1.2}
+.timeline .day small{display:block;font-family:var(--sans);font-size:14px;color:var(--muted)}
+.timeline h3{margin:0 0 4px;font-size:19px;font-weight:600}
+.timeline p{margin:0;color:var(--muted)}
+.timeline li.main-event .day{color:var(--deep)}
+:root[data-theme="dark"] .timeline li.main-event .day{color:var(--glow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .timeline li.main-event .day{color:var(--glow)}}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.two h3{font-size:18px;margin:0 0 6px}
+.two p{margin:0 0 20px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column}
+.card.primary{border:2px solid var(--deep);grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.card .tag{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:6px}
+.card h4{font-family:var(--serif);font-weight:400;font-size:24px;margin:0 0 8px;line-height:1.15}
+.card p{margin:0 0 14px;color:var(--muted);font-size:15px}
+.card dl{margin:0;font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.card dt{color:var(--muted)} .card dd{margin:0}
+.card .links{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--deep);color:var(--on-deep);text-decoration:none;border:0;border-radius:8px;padding:11px 18px;font:600 15px var(--sans);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.tip{font-size:14px;color:var(--muted);margin-top:16px;max-width:70ch}
+
+.explore{display:grid;grid-template-columns:1.55fr 1fr;gap:28px;align-items:start}
+.map-wrap{background:var(--soft);border-radius:16px;padding:10px}
+svg.map{width:100%;height:auto;display:block}
+svg.map .island{fill:var(--surface);stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+svg.map .sea-label{fill:var(--muted);font:italic 18px var(--serif);opacity:.8}
+svg.map .pin{cursor:pointer}
+svg.map .pin circle.dot{fill:var(--deep);stroke:var(--surface);stroke-width:3;transition:r .2s}
+svg.map .pin.venue circle.dot{fill:var(--glow);stroke:var(--deep)}
+svg.map .pin.active circle.dot{r:14}
+svg.map .pin circle.halo{fill:var(--accent);opacity:0}
+svg.map .pin.active circle.halo{opacity:.25}
+svg.map .pin text{fill:var(--ink);font:500 17px var(--sans);paint-order:stroke;stroke:var(--soft);stroke-width:4px;stroke-linejoin:round}
+svg.map .pin:focus{outline:none}
+svg.map .pin:focus-visible circle.dot{stroke:var(--glow);stroke-width:4}
+.spot{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;background:var(--soft)}
+.strip>.slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;position:relative}
+.strip>.slide img,.strip>.slide svg{width:100%;height:100%;object-fit:cover;display:block}
+.slide .rm{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:0;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:16px}
+.dots{display:flex;justify-content:center;gap:6px;padding:10px 0 0}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--accent)}
+.spot-body{padding:18px 22px 22px}
+.spot-body .tag{font-size:13px;color:var(--accent);font-weight:600}
+.spot-body h3{font-family:var(--serif);font-weight:400;font-size:28px;margin:2px 0 6px;line-height:1.15}
+.spot-body .drive{font-size:14px;color:var(--muted);margin:0 0 10px}
+.spot-body p.desc{margin:0 0 10px}
+.spot-body .note{font-size:14px;background:var(--soft);display:inline-block;padding:2px 8px;border-radius:4px}
+.spot-nav{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
+.spot-nav .count{font-size:14px;color:var(--muted);margin-left:auto}
+.owner-only{display:none}
+body.owner .owner-only{display:inline-block}
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px}
+.contacts textarea{width:100%;min-height:90px;font:14px var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px}
+.todo{columns:2;column-gap:40px}
+.todo div{break-inside:avoid;margin-bottom:22px}
+.todo h3{margin:0 0 4px;font-size:18px}
+.todo p{margin:0;color:var(--muted);font-size:15px}
+.todo .note{color:var(--ink);font-size:14px;background:var(--soft);display:inline-block;padding:2px 8px;border-radius:4px;margin-top:6px}
+
+/* ---------- RSVP form ---------- */
+.rsvp-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:start}
+form.rsvp{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label,.field legend{font-size:14px;font-weight:600}
+.field input,.field select,.field textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.field textarea{min-height:80px;resize:vertical}
+fieldset.field{border:0;padding:0;margin:0}
+.choice{display:flex;gap:10px}
+.choice label{flex:1;font-weight:500;border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;display:flex;gap:8px;align-items:center;background:var(--bg)}
+.choice input:checked+span{font-weight:600;color:var(--deep)}
+.form-msg{grid-column:1/-1;font-size:14px;color:var(--muted);min-height:20px;margin:0}
+
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:17px}
+.faq details p{margin:10px 0 0;color:var(--muted);max-width:68ch}
+
+/* ---------- Planner (owner only) ---------- */
+#planner{display:none}
+body.owner #planner{display:block}
+.private-note{font-size:14px;color:var(--muted);margin:-24px 0 28px}
+.palettes{display:flex;gap:12px;flex-wrap:wrap}
+.palette{border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;font:500 15px var(--sans);display:flex;flex-direction:column;gap:8px;min-width:150px;text-align:left}
+.palette[aria-pressed="true"]{border-color:var(--deep)}
+.palette .sw{display:flex;gap:4px}
+.palette .sw i{width:22px;height:22px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.08)}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:24px}
+.stats div b{font-family:var(--serif);font-weight:400;font-size:34px;display:block;line-height:1}
+.stats div span{font-size:14px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:1600px;font-size:15px}
+th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-weight:600;color:var(--muted);font-size:14px;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td input,td select,.addrow input,.addrow select,.import textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
+td input[type=number]{width:60px}
+td input[type=checkbox]{width:auto}
+.icon-btn{background:none;border:0;color:var(--muted);cursor:pointer;font-size:18px;padding:4px 8px;border-radius:6px}
+.icon-btn:hover{color:var(--ink);background:var(--bg)}
+.addrow{display:grid;grid-template-columns:2fr 80px auto;gap:10px;margin-top:16px}
+.import{margin-top:28px;display:grid;gap:10px;max-width:720px}
+.import textarea{min-height:120px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.tasks{list-style:none;padding:0;margin:0;max-width:640px}
+.tasks li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.tasks li.done span{text-decoration:line-through;color:var(--muted)}
+.tasks li span{flex:1}
+.msg{font-size:14px;color:var(--muted);min-height:20px;margin-top:8px}
+.setting{display:flex;gap:10px;align-items:center;max-width:520px;margin-top:8px}
+.setting input{flex:1;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+
+footer{text-align:center;padding:48px 20px 64px;color:var(--muted);font-size:15px}
+footer .serif{font-family:var(--serif);font-size:26px;color:var(--ink);display:block;margin-bottom:4px}
+
+@media (max-width:760px){
+  .hero .inner{grid-template-columns:1fr;padding:48px 20px 110px}
+  .countdown{justify-self:start}
+  .two,.rsvp-wrap,.card.primary{grid-template-columns:1fr}
+  form.rsvp{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:1fr;gap:6px}
+  .todo{columns:1}
+  .explore,.contacts{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+
+.lang{margin-left:8px;background:transparent;border:1px solid rgba(255,255,255,.45);color:var(--on-deep);border-radius:999px;padding:5px 12px;font:600 14px var(--sans);cursor:pointer;white-space:nowrap}
+.lang:hover{background:rgba(255,255,255,.1)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:-16px 0 20px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 14px var(--sans);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--deep);color:var(--on-deep);border-color:var(--deep)}
+svg.map .pin.dim{opacity:.22;cursor:default}
+svg.map .pin text.on,svg.map .pin.venue text{font-weight:700;font-size:19px}
+svg.map .inset-bg{fill:var(--soft);stroke:var(--deep);stroke-width:1.5}
+svg.map .inset-frame{fill:none;stroke:var(--deep);stroke-width:1.5;stroke-dasharray:4 3}
+svg.map .island-in{vector-effect:non-scaling-stroke}
+svg.map .inset-label{fill:var(--deep);font:600 16px var(--sans)}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Sections">
+  <div class="inner">
+    <span class="mark">Mei &amp; Matthew</span>
+    <a href="#weekend" data-i18n="nav.weekend">The weekend</a>
+    <a href="#travel" data-i18n="nav.travel">Getting there</a>
+    <a href="#stay" data-i18n="nav.stay">Where to stay</a>
+    <a href="#explore" data-i18n="nav.explore">Explore O‘ahu</a>
+    <a href="#rsvp" data-i18n="nav.rsvp">RSVP</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <button class="lang" id="lang-btn" type="button" lang="zh-Hans">中文</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="lei" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="var(--flower)"><g transform="translate(100 100)">
+      <ellipse rx="22" ry="52" transform="rotate(0) translate(0 -46)"/>
+      <ellipse rx="22" ry="52" transform="rotate(72) translate(0 -46)"/>
+      <ellipse rx="22" ry="52" transform="rotate(144) translate(0 -46)"/>
+      <ellipse rx="22" ry="52" transform="rotate(216) translate(0 -46)"/>
+      <ellipse rx="22" ry="52" transform="rotate(288) translate(0 -46)"/>
+    </g></g>
+    <circle cx="100" cy="100" r="14" fill="var(--glow)"/>
+  </svg>
+  <div class="inner">
+    <div>
+      <p class="names">Mei He &amp; Matthew Forquer</p>
+      <h1 data-i18n="hero.h1">Ten years married. One more aloha.</h1>
+      <p class="when" data-i18n="hero.when">Saturday, May 1, 2027 · Halekulani, Waikīkī</p>
+    </div>
+    <div class="countdown" aria-label="Countdown">
+      <div><b id="cd-d">–</b><span data-i18n="cd.d">days</span></div>
+      <div><b id="cd-h">–</b><span data-i18n="cd.h">hours</span></div>
+      <div><b id="cd-m">–</b><span data-i18n="cd.m">minutes</span></div>
+    </div>
+  </div>
+  <svg class="tide" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 C 180 10, 360 70, 540 40 S 900 10, 1080 40 S 1320 70, 1440 36 L1440 80 L0 80 Z" fill="var(--bg)"/>
+  </svg>
+</header>
+
+<main>
+  <section id="weekend">
+    <h2 data-i18n="wk.h">The weekend</h2>
+    <p class="lede" data-i18n="wk.lede">Ten years ago we said yes. This time we just want everyone we love in one place, by the ocean. Our celebration falls on May 1, Lei Day in Hawai‘i, so come ready for flowers. Join us for as much or as little of the weekend as you can.</p>
+    <ol class="timeline">
+      <li>
+        <div class="day"><span data-i18n="wk.fri">Friday</span><small data-i18n="wk.fri.d">April 30</small></div>
+        <div><h3 data-i18n="wk.fri.h">Welcome drinks</h3><p data-i18n="wk.fri.p"><span class="ph">Time and location to be updated</span>. Come straight from the airport, slippers welcome.</p></div>
+      </li>
+      <li class="main-event">
+        <div class="day"><span data-i18n="wk.sat">Saturday</span><small data-i18n="wk.sat.d">May 1</small></div>
+        <div><h3 data-i18n="wk.sat.h">The anniversary celebration</h3><p data-i18n="wk.sat.p"><strong>5–10 pm · Hau Terrace Lanai at Halekulani.</strong> Dinner, a few words, and dancing as the sun goes down over Waikīkī (sunset is around 6:50 pm in early May).</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="travel">
+    <h2 data-i18n="tr.h">Getting there</h2>
+    <p class="lede" data-i18n="tr.lede">Everything you need to plan flights and get around once you land.</p>
+    <div class="two">
+      <div>
+        <h3 data-i18n="tr.fly.h">Flying in</h3>
+        <p data-i18n="tr.fly.p">Fly into Daniel K. Inouye International Airport (HNL). Halekulani is about 9 miles away, roughly 20–40 minutes by car depending on traffic. Late April into May is a popular time to visit, so book flights early.</p>
+        <h3 data-i18n="tr.go.h">Getting around</h3>
+        <p data-i18n="tr.go.p">Rideshare and taxis are easy from the airport, and Waikīkī itself is very walkable. If you plan to explore the North Shore or Kailua, rent a car for a day or two. Hotel parking in Waikīkī is often charged nightly.</p>
+      </div>
+      <div>
+        <h3 data-i18n="tr.wx.h">Weather &amp; packing</h3>
+        <p data-i18n="tr.wx.p">Early May is warm and mostly dry, typically in the high 70s to low 80s °F, with ocean breezes. Pack reef-safe sunscreen (Hawai‘i bans sunscreens with oxybenzone and octinoxate), a light layer for evenings, and something nice for Saturday.</p>
+        <h3 data-i18n="tr.arr.h">Arriving from the mainland</h3>
+        <p data-i18n="tr.arr.p">No passport needed for U.S. travelers. Everyone arriving in Hawai‘i completes an agricultural declaration, which you can usually do online or on the plane.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stay">
+    <h2 data-i18n="st.h">Where to stay</h2>
+    <p class="lede" data-i18n="st.lede">The celebration is at Halekulani on Waikīkī Beach. We’ll post our group rate here in February–March 2027; until then, here are great places within a few minutes’ walk.</p>
+    <div class="cards">
+      <article class="card primary">
+        <div>
+          <div class="tag" data-i18n="st.v.tag">Our venue · group rate coming Feb–Mar 2027</div>
+          <h4>Halekulani</h4>
+          <p data-i18n="st.v.p">Our home for the weekend: the century-old oceanfront hotel right on Waikīkī Beach, with views of Diamond Head. We’ll post the group rate and booking code here as soon as it’s set.</p>
+          <div class="links"><a class="btn" href="https://www.halekulani.com" target="_blank" rel="noopener" data-i18n="st.v.btn">Visit Halekulani</a></div>
+        </div>
+        <dl>
+          <dt data-i18n="st.rate">Group rate</dt><dd data-i18n="st.tbu"><span class="ph">to be updated</span></dd>
+          <dt data-i18n="st.code">Code</dt><dd data-i18n="st.tbu2"><span class="ph">to be updated</span></dd>
+          <dt data-i18n="st.by">Book by</dt><dd data-i18n="st.tbu3"><span class="ph">to be updated</span></dd>
+        </dl>
+      </article>
+    </div>
+
+    <h3 class="sub" data-i18n="st.near">Nearby hotels</h3>
+    <div class="cards">
+      <article class="card">
+        <div class="tag" data-i18n="st.h1.tag">Across the street</div>
+        <h4>Halepuna Waikiki by Halekulani</h4>
+        <p data-i18n="st.h1.p">Halekulani’s sister hotel, a modern boutique stay with an eighth-floor infinity pool, usually at a gentler price.</p>
+        <div class="links"><a class="btn ghost" href="https://www.halepuna.com" target="_blank" rel="noopener" data-i18n="st.see">See rooms</a></div>
+      </article>
+      <article class="card">
+        <div class="tag" data-i18n="st.h2.tag">Next door</div>
+        <h4>Outrigger Reef Waikiki Beach Resort</h4>
+        <p data-i18n="st.h2.p">Right on the sand beside Halekulani, relaxed and family-friendly.</p>
+        <div class="links"><a class="btn ghost" href="https://www.outrigger.com" target="_blank" rel="noopener" data-i18n="st.see2">See rooms</a></div>
+      </article>
+      <article class="card">
+        <div class="tag" data-i18n="st.h3.tag">A short beach walk</div>
+        <h4>The Royal Hawaiian</h4>
+        <p data-i18n="st.h3.p">The famous “Pink Palace of the Pacific,” a classic Waikīkī splurge.</p>
+        <div class="links"><a class="btn ghost" href="https://www.royal-hawaiian.com" target="_blank" rel="noopener" data-i18n="st.see3">See rooms</a></div>
+      </article>
+    </div>
+
+    <h3 class="sub" data-i18n="st.vr">Vacation rentals</h3>
+    <div class="cards">
+      <article class="card">
+        <div class="tag" data-i18n="st.r1.tag">Oceanfront condos</div>
+        <h4>Waikiki Shore</h4>
+        <p data-i18n="st.r1.p">The only condo building directly on Waikīkī Beach, a few minutes’ walk from Halekulani. Units have kitchens and are rented through the building’s managers or owners.</p>
+        <div class="links"><a class="btn ghost" href="https://www.vrbo.com/search?destination=Waikiki%20Shore%2C%20Honolulu" target="_blank" rel="noopener" data-i18n="st.vrbo">Search on Vrbo</a></div>
+      </article>
+      <article class="card">
+        <div class="tag" data-i18n="st.r2.tag">Big groups</div>
+        <h4>Waikiki Banyan</h4>
+        <p data-i18n="st.r2.p">Condo-hotel towers at the Diamond Head end of Waikīkī with one-bedroom suites, good for families sharing.</p>
+        <div class="links"><a class="btn ghost" href="https://www.airbnb.com/s/Waikiki-Banyan--Honolulu--HI/homes" target="_blank" rel="noopener" data-i18n="st.airbnb">Search on Airbnb</a></div>
+      </article>
+      <article class="card">
+        <div class="tag" data-i18n="st.r3.tag">Browse everything</div>
+        <h4 data-i18n="st.r3.h">Waikīkī rentals</h4>
+        <p data-i18n="st.r3.p">Search the whole neighborhood and compare. Filter for entire homes near Kalākaua Avenue.</p>
+        <div class="links">
+          <a class="btn ghost" href="https://www.airbnb.com/s/Waikiki--Honolulu--HI/homes" target="_blank" rel="noopener">Airbnb</a>
+          <a class="btn ghost" href="https://www.vrbo.com/search?destination=Waikiki%2C%20Honolulu" target="_blank" rel="noopener">Vrbo</a>
+        </div>
+      </article>
+    </div>
+    <p class="tip" data-i18n="st.tip">A quick tip: Honolulu strictly limits short-term rentals, and only some Waikīkī buildings allow them. Book a listing that shows a permit or registration number, or one in a hotel-zoned building, so your stay can’t be cancelled.</p>
+  </section>
+
+  <section id="explore">
+    <h2 data-i18n="ex.h">Explore O‘ahu</h2>
+    <p class="lede" data-i18n="ex.lede">Staying a few extra days? Pick a type of adventure, tap a spot on the map, swipe through the pictures, or step through our favorites one by one.</p>
+    <div class="chips" id="chips" role="group" aria-label="Filter"></div>
+    <div class="explore">
+      <div class="map-wrap"><svg class="map" id="map" viewBox="0 0 900 540" role="group" aria-label="Map of O‘ahu"></svg></div>
+      <div class="spot" id="spot" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="rsvp">
+    <h2 data-i18n="rs.h">RSVP</h2>
+    <div class="rsvp-wrap">
+      <div>
+        <p class="lede" style="margin-bottom:16px" data-i18n="rs.lede"><strong>Please reply by January 30, 2027.</strong> Tell us who’s coming, when you land, and where you’re staying, so we can plan the weekend around you.</p>
+        <p class="tip" style="margin-top:0" data-i18n="rs.t1">When you press “Send RSVP,” your email app opens with your answers filled in. Just hit send.</p>
+        <p class="tip" data-i18n="rs.t2"><strong>Plans change?</strong> Come back anytime, update your answers here and send again. Your answers are saved on this device, and we’ll always use your latest reply.</p>
+        <p class="tip" data-i18n="rs.t3">We’ll post the hotel group rate in February–March 2027 and text or email you when it’s ready. Then come back, book, and update your RSVP with where you’re staying.</p>
+      </div>
+      <form class="rsvp" id="rsvp-form" novalidate>
+        <div class="field full"><label for="r-name" data-i18n="f.name">Your name(s)</label><input id="r-name" required autocomplete="name" placeholder="e.g. Jane &amp; Alex Kim" data-i18n-ph="ph.name"></div>
+        <fieldset class="field full"><legend data-i18n="f.att">Will you join us?</legend>
+          <div class="choice">
+            <label><input type="radio" name="r-att" value="Yes" checked><span data-i18n="f.yes">Joyfully yes</span></label>
+            <label><input type="radio" name="r-att" value="No"><span data-i18n="f.no">Sadly, can’t make it</span></label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="r-email" data-i18n="f.email">Email</label><input id="r-email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="r-phone" data-i18n="f.phone">Cell phone</label><input id="r-phone" type="tel" required autocomplete="tel" placeholder="(555) 555-5555"></div>
+        <div class="field"><label for="r-size" data-i18n="f.size">Number in your party</label><input id="r-size" type="number" min="1" value="2"></div>
+        <div class="field"><label for="r-hotel" data-i18n="f.hotel">Where you’re staying</label><input id="r-hotel" placeholder="Hotel or rental (or “not booked yet”)" data-i18n-ph="ph.hotel"></div>
+        <div class="field"><label for="r-arr" data-i18n="f.arr">Arriving</label><input id="r-arr" type="date" min="2027-04-20" max="2027-05-10"></div>
+        <div class="field"><label for="r-dep" data-i18n="f.dep">Leaving</label><input id="r-dep" type="date" min="2027-04-20" max="2027-05-15"></div>
+        <fieldset class="field full"><legend data-i18n="f.ev">Which events will you join?</legend>
+          <div class="choice" style="flex-wrap:wrap">
+            <label><input type="checkbox" name="r-ev" value="Fri welcome drinks" checked><span data-i18n="f.ev1">Fri welcome drinks</span></label>
+            <label><input type="checkbox" name="r-ev" value="Sat celebration" checked><span data-i18n="f.ev2">Sat celebration</span></label>
+          </div>
+        </fieldset>
+        <div class="field full" style="margin-top:6px"><span style="font-size:14px;font-weight:600" data-i18n="f.wed">If you’re married, tell us about your wedding</span></div>
+        <div class="field"><label for="r-wdate" data-i18n="f.wdate">Wedding date</label><input id="r-wdate" type="date"></div>
+        <div class="field"><label for="r-wsong" data-i18n="f.wsong">Your wedding song</label><input id="r-wsong" placeholder="Song and artist" data-i18n-ph="ph.song"></div>
+        <div class="field full"><label for="r-diet" data-i18n="f.diet">Dietary needs</label><input id="r-diet" placeholder="Allergies, vegetarian, etc." data-i18n-ph="ph.diet"></div>
+        <div class="field full"><label for="r-msg" data-i18n="f.msg">A note for Mei &amp; Matthew</label><textarea id="r-msg"></textarea></div>
+        <button class="btn" type="submit" data-i18n="f.send">Send RSVP</button>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2 data-i18n="fq.h">Questions</h2>
+    <details><summary data-i18n="fq.q1">What should I wear?</summary><p data-i18n="fq.a1">Wear the colors that make you happy!</p></details>
+    <details><summary data-i18n="fq.q2">Are kids welcome?</summary><p data-i18n="fq.a2">Very much so! We want to share our favorite vacation place and experiences with everyone we love, little ones included.</p></details>
+    <details><summary data-i18n="fq.q3">Gifts?</summary><p data-i18n="fq.a3">Your being here is the gift. Truly.</p></details>
+    <details><summary data-i18n="fq.q4">Who do I contact with questions?</summary><p><span data-i18n="fq.mei">Mei</span>: <a href="tel:+16149060320">(614) 906-0320</a> · <span data-i18n="fq.matt">Matt</span>: <a href="tel:+16145077378">(614) 507-7378</a></p></details>
+  </section>
+
+</main>
+
+<footer>
+  <span class="serif" data-i18n="ft.h">Mahalo for celebrating with us</span>
+  <span data-i18n="ft.p">Mei &amp; Matthew · May 1, 2027 · Honolulu</span>
+</footer>
+
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let db=null;
+const PALETTES={
+  lagoon:{name:"Lagoon",sw:["#0B4F6C","#178A86","#F4D58D","#D4EFEE"]},
+  reef:{name:"Reef",sw:["#137C8B","#0E6E7A","#FFF1C9","#D9F3F1"]},
+  pacific:{name:"Deep Pacific",sw:["#13294B","#2A6F97","#9AD1D4","#DCE8F2"]},
+  leiday:{name:"Lei Day",sw:["#8E2348","#F2A93B","#2F6B4F","#FBE0D8"]},
+  monstera:{name:"Monstera",sw:["#1E3B2C","#3E7D4F","#EAC54F","#E1EAD3"]},
+  sunset:{name:"Sunset",sw:["#3A2556","#C2456E","#F4A259","#FCE3D6"]}
+};
+// RSVP replies go to this address.
+const RSVP_EMAIL="";
+let settings={palette:"sunset",rsvpEmail:RSVP_EMAIL};
+function applyPalette(p){if(PALETTES[p])document.documentElement.setAttribute("data-palette",p);renderPalettes()}
+function renderPalettes(){
+  const el=document.getElementById("palettes");if(!el)return;
+  const cur=document.documentElement.getAttribute("data-palette");
+  el.innerHTML=Object.entries(PALETTES).map(([k,v])=>`<button class="palette" data-p="${k}" aria-pressed="${k===cur}"><span class="sw">${v.sw.map(c=>`<i style="background:${c}"></i>`).join("")}</span>${v.name}</button>`).join("");
+}
+renderPalettes();
+
+// ---------- Language ----------
+const ZH={
+ "nav.weekend":"周末安排","nav.travel":"交通指南","nav.stay":"住宿","nav.explore":"探索欧胡岛","nav.rsvp":"回复出席","nav.faq":"常见问题",
+ "hero.h1":"结婚十年，再续一份 Aloha。","hero.when":"2027年5月1日（星期六）· 威基基 Halekulani 酒店",
+ "cd.d":"天","cd.h":"小时","cd.m":"分钟",
+ "wk.h":"周末安排",
+ "wk.lede":"十年前，我们说了“我愿意”。这一次，我们只想把所有爱的人聚在一起，在海边。我们的庆典恰逢5月1日夏威夷“花环节”（Lei Day），欢迎戴上花环一起来！周末的活动随意参加，能来多少都好。",
+ "wk.fri":"星期五","wk.fri.d":"4月30日","wk.fri.h":"欢迎酒会","wk.fri.p":"<span class=\"ph\">时间和地点待定</span>。下了飞机直接来吧，穿拖鞋也没关系。",
+ "wk.sat":"星期六","wk.sat.d":"5月1日","wk.sat.h":"十周年纪念庆典","wk.sat.p":"<strong>下午5点至晚上10点 · Halekulani 酒店 Hau Terrace Lanai。</strong>晚餐、几句心里话，在威基基的日落中跳舞（5月初日落时间约为傍晚6:50）。",
+ "tr.h":"交通指南","tr.lede":"订机票和抵达后出行需要的所有信息。",
+ "tr.fly.h":"航班","tr.fly.p":"飞往檀香山丹尼尔·井上国际机场（HNL）。机场距 Halekulani 约9英里（约14公里），视交通情况车程约20–40分钟。4月底到5月是旅游旺季，建议尽早订票。",
+ "tr.go.h":"当地出行","tr.go.p":"机场有出租车和网约车，威基基步行就很方便。如果想去北岸或凯卢阿，建议租车一两天。威基基的酒店停车通常按晚收费。",
+ "tr.wx.h":"天气与行李","tr.wx.p":"5月初温暖干爽，气温通常在华氏70多度到80出头（约25–28°C），有海风。请带上珊瑚礁友好型防晒霜（夏威夷禁售含 oxybenzone 和 octinoxate 成分的防晒霜）、晚上穿的薄外套，以及周六穿的漂亮衣服。",
+ "tr.arr.h":"从美国本土抵达","tr.arr.p":"美国旅客无需护照。所有抵达夏威夷的旅客都需填写农产品申报表，通常可在网上或飞机上完成。",
+ "st.h":"住宿","st.lede":"庆典在威基基海滩的 Halekulani 酒店举行。团体价将于2027年2–3月公布在这里；在此之前，以下几家都在步行几分钟的范围内。",
+ "st.v.tag":"庆典场地 · 团体价将于2027年2–3月公布","st.v.p":"我们这个周末的“家”：百年历史的海滨酒店，就在威基基海滩上，可远眺钻石头山。团体价和预订代码确定后会第一时间公布在这里。","st.v.btn":"访问 Halekulani",
+ "st.rate":"团体价","st.code":"预订代码","st.by":"预订截止","st.tbu":"<span class=\"ph\">待更新</span>","st.tbu2":"<span class=\"ph\">待更新</span>","st.tbu3":"<span class=\"ph\">待更新</span>",
+ "st.near":"附近酒店","st.h1.tag":"就在对面","st.h1.p":"Halekulani 的姊妹酒店，现代精品风格，八楼有无边泳池，价格通常更亲民。","st.see":"查看房间","st.see2":"查看房间","st.see3":"查看房间",
+ "st.h2.tag":"隔壁","st.h2.p":"就在 Halekulani 旁边的沙滩上，轻松随意，适合家庭。","st.h3.tag":"沿海滩步行即到","st.h3.p":"著名的“太平洋粉红宫殿”，威基基的经典奢华之选。",
+ "st.vr":"度假公寓","st.r1.tag":"海滨公寓","st.r1.p":"威基基海滩上唯一一栋临海公寓楼，距 Halekulani 步行几分钟。房间带厨房，通过楼盘管理方或业主出租。","st.vrbo":"在 Vrbo 搜索",
+ "st.r2.tag":"适合大家庭","st.r2.p":"位于威基基钻石头山一端的公寓式酒店，有一居室套房，适合全家同住。","st.airbnb":"在 Airbnb 搜索",
+ "st.r3.tag":"浏览全部","st.r3.h":"威基基度假屋","st.r3.p":"搜索整个街区并比较。可筛选卡拉卡瓦大道（Kalākaua Ave）附近的整套房源。",
+ "st.tip":"小提示：檀香山对短租管理非常严格，只有部分威基基楼盘允许短租。请预订标有许可证或登记号的房源，或位于酒店区的楼盘，以免被取消。",
+ "ex.h":"探索欧胡岛","ex.lede":"想多玩几天？选一种玩法，点地图上的地点，滑动看图片，或者一个个浏览我们的推荐。",
+ "rs.h":"回复出席","rs.lede":"<strong>请在2027年1月30日前回复。</strong>告诉我们谁会来、什么时候到、住在哪里，方便我们围绕大家安排周末。",
+ "rs.t1":"点击“发送回复”后，您的邮件应用会自动打开并填好答案，直接发送即可。",
+ "rs.t2":"<strong>计划有变？</strong>随时回来修改并重新发送。您的答案会保存在这台设备上，我们以最新回复为准。",
+ "rs.t3":"酒店团体价将于2027年2–3月公布，届时我们会发短信或邮件通知您。到时请回来预订，并更新您的住宿信息。",
+ "f.name":"您的姓名","f.att":"您会来吗？","f.yes":"欣然出席","f.no":"很遗憾无法出席","f.email":"电子邮箱","f.phone":"手机号码","f.size":"同行人数","f.hotel":"住宿地点",
+ "f.arr":"抵达日期","f.dep":"离开日期","f.ev":"您会参加哪些活动？","f.ev1":"周五欢迎酒会","f.ev2":"周六庆典","f.wed":"如果您已婚，和我们分享您的婚礼吧",
+ "f.wdate":"结婚日期","f.wsong":"您的婚礼歌曲","f.diet":"饮食需求","f.msg":"给 Mei 和 Matthew 的话","f.send":"发送回复",
+ "fq.h":"常见问题","fq.q1":"应该穿什么？","fq.a1":"穿上让你开心的颜色！","fq.q2":"可以带孩子吗？","fq.a2":"非常欢迎！我们想和所有我们爱的人分享我们最爱的度假地和体验，小朋友当然也包括在内。",
+ "fq.q3":"需要准备礼物吗？","fq.a3":"您的到来就是最好的礼物，真的。","fq.q4":"有问题联系谁？","fq.mei":"Mei","fq.matt":"Matt",
+ "ft.h":"感谢您与我们一起庆祝","ft.p":"Mei 和 Matthew · 2027年5月1日 · 檀香山"
+};
+const ZH_PH={"ph.name":"例如：张伟和李娜","ph.hotel":"酒店或度假屋（或“还没订”）","ph.song":"歌名和歌手","ph.diet":"过敏、素食等"};
+const MSG={
+ en:{needName:"your name",needEmail:"your email",needPhone:"your cell number",need:x=>`Add ${x} so we can reach you.`,badEmail:"Check your email address.",soon:"RSVPs open soon. Please check back in a few days.",
+   sent:e=>`Your email app should open with your RSVP filled in. Just press send. If it didn’t open, copy the text below and email it to ${e}. Mahalo!`,
+   back:"Welcome back! Your last RSVP is filled in below. Change anything and send it again.",greet:"Aloha Mei & Matthew!",
+   prev:"Previous",ocean:"Pacific Ocean",oahu:"O‘ahu",next:"Next",maps:"Open in Maps",of:(a,b)=>`${a} of ${b}`,wk:"Waikīkī",addPhotos:"Add photos",
+   cats:{all:"All",hike:"Hikes",ocean:"Ocean & surf",tour:"Tours & day trips",family:"Family & culture"},title:"Mei & Matthew · Ten Years · Honolulu",lang:"中文"},
+ zh:{needName:"您的姓名",needEmail:"电子邮箱",needPhone:"手机号码",need:x=>`请填写${x}，方便我们联系您。`,badEmail:"请检查电子邮箱地址。",soon:"回复即将开放，请过几天再来。",
+   sent:e=>`您的邮件应用应该已经打开并填好了回复，直接发送即可。如果没有打开，请复制下面的内容发送到 ${e}。谢谢！`,
+   back:"欢迎回来！下面已填好您上次的回复，修改后重新发送即可。",greet:"Aloha Mei & Matthew！",
+   prev:"上一个",ocean:"太平洋",oahu:"欧胡岛",next:"下一个",maps:"在地图中打开",of:(a,b)=>`第 ${a} 个，共 ${b} 个`,wk:"威基基",addPhotos:"添加照片",
+   cats:{all:"全部",hike:"徒步",ocean:"海洋与冲浪",tour:"游览与一日游",family:"亲子与文化"},title:"Mei & Matthew · 结婚十周年 · 檀香山",lang:"English"}
+};
+let lang=(()=>{try{const s=localStorage.getItem("mm-lang");if(s==="en"||s==="zh")return s}catch(e){}return /^zh/i.test(navigator.language||"")?"zh":"en"})();
+const t=k=>MSG[lang][k];
+const EN={},EN_PH={};
+document.querySelectorAll("[data-i18n]").forEach(el=>EN[el.dataset.i18n]=el.innerHTML);
+document.querySelectorAll("[data-i18n-ph]").forEach(el=>EN_PH[el.dataset.i18nPh]=el.placeholder);
+
+// ---------- Explore map ----------
+const SPOTS=[
+ {id:"halekulani",cat:"venue",wk:1,lat:21.2793,lon:-157.8335,q:"Halekulani Honolulu",scene:"beach",venue:true,
+  en:{name:"Halekulani",tag:"Our celebration · Saturday 5–10 pm",drive:"Hau Terrace Lanai, right on Waikīkī Beach",desc:"Where we’ll celebrate on Saturday, with Diamond Head in view as the sun goes down.",note:""},
+  zh:{name:"Halekulani 酒店",tag:"我们的庆典 · 周六下午5点至晚上10点",drive:"Hau Terrace Lanai，就在威基基海滩上",desc:"周六庆典的地点，日落时可远眺钻石头山。",note:""}},
+ {id:"surf",cat:"ocean",wk:1,lat:21.2712,lon:-157.8275,q:"Kuhio Beach surf lessons Waikiki",scene:"wave",
+  en:{short:"Surf lessons",name:"Surf lesson in Waikīkī",tag:"Ocean & surf",drive:"About a 5-minute walk from Halekulani",desc:"Waikīkī’s gentle, rolling waves are where modern surfing grew up, and the friendliest place on O‘ahu to stand up on a board for the first time. Beach stands along Kūhiō Beach offer group and private lessons for all ages.",note:"Book a morning lesson, when the water tends to be calmest"},
+  zh:{short:"冲浪课",name:"威基基冲浪课",tag:"海洋与冲浪",drive:"从 Halekulani 步行约5分钟",desc:"威基基平缓绵长的海浪是现代冲浪运动成长的地方，也是欧胡岛第一次学冲浪最友好的地点。库希奥海滩（Kūhiō Beach）沿岸有许多冲浪摊位，提供适合各年龄段的团体课和私教课。",note:"建议预约早上的课程，那时海面通常最平静"}},
+ {id:"aquarium",cat:"family",wk:1,lat:21.2654,lon:-157.8217,q:"Waikiki Aquarium",scene:"bay",
+  en:{short:"Aquarium & Zoo",name:"Waikīkī Aquarium & Honolulu Zoo",tag:"Family & culture",drive:"About 5 minutes by car, or a 20-minute beach walk",desc:"Two easy outings for little ones at the Diamond Head end of Waikīkī. The aquarium focuses on Hawai‘i’s own sea life, including a Hawaiian monk seal.",note:"Next to Kapi‘olani Park"},
+  zh:{short:"水族馆和动物园",name:"威基基水族馆和檀香山动物园",tag:"亲子与文化",drive:"车程约5分钟，或沿海滩步行约20分钟",desc:"位于威基基钻石头山一端，两处都很适合带小朋友。水族馆以夏威夷本地海洋生物为主，还能见到夏威夷僧海豹。",note:"毗邻卡皮欧拉尼公园"}},
+ {id:"diamondhead",cat:"hike",wk:1,lat:21.2614,lon:-157.8056,q:"Diamond Head State Monument",scene:"crater",
+  en:{short:"Diamond Head",name:"Diamond Head (Lēʻahi)",tag:"Hike",drive:"About 10 minutes from Halekulani",desc:"A short, steep hike up a volcanic crater to the classic view over Waikīkī. Go early, before the heat.",note:"Out-of-state visitors need a timed reservation"},
+  zh:{short:"钻石头山",name:"钻石头山（Lēʻahi）",tag:"徒步",drive:"距 Halekulani 车程约10分钟",desc:"短而陡的火山口步道，登顶可俯瞰威基基的经典全景。建议趁早出发，避开炎热。",note:"外州游客需提前预约入园时段"}},
+ {id:"manoa",cat:"hike",lat:21.3326,lon:-157.8007,q:"Manoa Falls Trail",scene:"valley",
+  en:{short:"Mānoa Falls",name:"Mānoa Falls",tag:"Hike",drive:"About 20 minutes from Halekulani",desc:"An easy-to-moderate rainforest walk, about 1.5 miles round trip, to a 150-foot waterfall. The trail is often muddy, so wear shoes you don’t mind getting dirty.",note:"Bring bug spray"},
+  zh:{short:"马诺阿瀑布",name:"马诺阿瀑布（Mānoa Falls）",tag:"徒步",drive:"距 Halekulani 车程约20分钟",desc:"穿过雨林的轻松至中等难度步道，往返约1.5英里（约2.4公里），终点是150英尺（约46米）高的瀑布。路面常有泥泞，请穿不怕弄脏的鞋。",note:"记得带驱蚊液"}},
+ {id:"puu",cat:"family",lat:21.3155,lon:-157.8197,q:"Puu Ualakaa State Park",scene:"cliff",
+  en:{short:"Puʻu ʻUalakaʻa",name:"Puʻu ʻUalakaʻa Lookout",tag:"Sunset views",drive:"About 20 minutes from Halekulani",desc:"Drive up Round Top for a sweeping view from Diamond Head to Pearl Harbor. One of the city’s best sunset spots.",note:"Check gate hours before you go"},
+  zh:{short:"圆顶山观景台",name:"Puʻu ʻUalakaʻa 观景台",tag:"日落观景",drive:"距 Halekulani 车程约20分钟",desc:"开车上圆顶山（Round Top），从钻石头山一直望到珍珠港，是檀香山最佳日落观赏点之一。",note:"出发前请确认开放时间"}},
+ {id:"bishop",cat:"family",lat:21.3331,lon:-157.8707,q:"Bishop Museum Honolulu",scene:"harbor",
+  en:{short:"Bishop Museum",name:"Bishop Museum",tag:"Family & culture",drive:"About 20 minutes from Halekulani",desc:"Hawai‘i’s largest museum, devoted to Hawaiian and Pacific culture, history and science. A great pick for a rainy or hot afternoon.",note:"Buy tickets online ahead"},
+  zh:{short:"毕夏普博物馆",name:"毕夏普博物馆（Bishop Museum）",tag:"亲子与文化",drive:"距 Halekulani 车程约20分钟",desc:"夏威夷最大的博物馆，展示夏威夷及太平洋地区的文化、历史和自然科学。雨天或炎热的下午很适合来。",note:"可提前网上购票"}},
+ {id:"pearl",cat:"tour",lat:21.3649,lon:-157.9500,q:"Pearl Harbor National Memorial",scene:"harbor",
+  en:{name:"Pearl Harbor",tag:"History",drive:"About 30 minutes from Halekulani",desc:"The USS Arizona Memorial, Battleship Missouri and Pearl Harbor museums make a moving half-day or full-day visit.",note:"Reserve Arizona Memorial tickets ahead on Recreation.gov"},
+  zh:{name:"珍珠港",tag:"历史",drive:"距 Halekulani 车程约30分钟",desc:"亚利桑那号纪念馆、密苏里号战列舰和珍珠港各博物馆，值得花半天到一天细细参观。",note:"请提前在 Recreation.gov 预订亚利桑那号纪念馆门票"}},
+ {id:"hanauma",cat:"ocean",lat:21.2690,lon:-157.6938,q:"Hanauma Bay Nature Preserve",scene:"bay",
+  en:{short:"Hanauma Bay",name:"Hanauma Bay",tag:"Snorkel",drive:"About 25 minutes from Halekulani",desc:"Calm, protected snorkeling in a volcanic crater bay full of reef fish.",note:"Reservations required; check open days before you go"},
+  zh:{short:"恐龙湾",name:"恐龙湾（Hanauma Bay）",tag:"浮潜",drive:"距 Halekulani 车程约25分钟",desc:"火山口形成的海湾，风平浪静，受保护的珊瑚礁里满是热带鱼，非常适合浮潜。",note:"需提前预约，出发前请确认开放日"}},
+ {id:"makapuu",cat:"hike",lat:21.3096,lon:-157.6499,q:"Makapuu Point Lighthouse Trail",scene:"cliff",
+  en:{short:"Makapuʻu",name:"Makapuʻu Lighthouse Trail",tag:"Easy hike",drive:"About 30 minutes from Halekulani",desc:"A fully paved trail up the sea cliffs with sweeping views of the windward coast and offshore islets.",note:"No shade, so bring water and sun protection"},
+  zh:{short:"马卡普乌",name:"马卡普乌灯塔步道（Makapuʻu）",tag:"轻松徒步",drive:"距 Halekulani 车程约30分钟",desc:"全程铺装的海崖步道，向风海岸和近海小岛尽收眼底。",note:"全程无遮阴，请带足水并做好防晒"}},
+ {id:"kailua",cat:"ocean",lat:21.3931,lon:-157.7154,q:"Lanikai Beach",scene:"islets",
+  en:{short:"Kailua & Lanikai",name:"Kailua & Lanikai",tag:"Beach day",drive:"About 30 minutes from Halekulani",desc:"Soft white sand, turquoise water, and the twin Mokulua islands offshore. Hike the short, steep Lanikai Pillbox trail for the postcard view.",note:"Parking is tight, so go early"},
+  zh:{short:"凯卢阿",name:"凯卢阿和拉尼凯海滩",tag:"海滩日",drive:"距 Halekulani 车程约30分钟",desc:"白沙细软、海水碧蓝，近海是双子岛 Mokulua。爬一段短而陡的 Lanikai Pillbox 步道，就能拍到明信片般的美景。",note:"停车位紧张，建议早去"}},
+ {id:"kualoa",cat:"tour",lat:21.5212,lon:-157.8370,q:"Kualoa Ranch",scene:"valley",
+  en:{name:"Kualoa Ranch",tag:"Jurassic Park tour",drive:"About 45 minutes from Halekulani",desc:"A huge private ranch in a dramatic green valley where Jurassic Park and many other films were shot. Choose a movie-sites tour, ATV or horseback ride, or zipline.",note:"Book tours well in advance"},
+  zh:{name:"Kualoa 牧场",tag:"侏罗纪公园之旅",drive:"距 Halekulani 车程约45分钟",desc:"位于壮观绿色山谷中的大型私人牧场，《侏罗纪公园》等多部电影曾在此取景。可选择电影外景地导览、全地形车、骑马或滑索。",note:"请尽早预订行程"}},
+ {id:"dole",cat:"tour",lat:21.5257,lon:-158.0378,q:"Dole Plantation",scene:"field",
+  en:{short:"Dole Plantation",name:"Dole Plantation",tag:"Pineapple farm tour",drive:"About 40 minutes from Halekulani",desc:"A pineapple-themed stop in the island’s central farmland: ride the Pineapple Express train, wander the garden maze, and try a Dole Whip.",note:"An easy stop on the way to the North Shore"},
+  zh:{short:"都乐菠萝园",name:"都乐菠萝园（Dole Plantation）",tag:"菠萝农场之旅",drive:"距 Halekulani 车程约40分钟",desc:"位于岛中部农田的菠萝主题园：乘坐菠萝特快小火车、走花园迷宫，再来一份经典的 Dole Whip 菠萝冰淇淋。",note:"去北岸途中顺路停留"}},
+ {id:"northshore",cat:"tour",lat:21.5928,lon:-158.1034,q:"Haleiwa Hawaii",scene:"wave",
+  en:{short:"North Shore",name:"North Shore & Haleʻiwa",tag:"Day trip",drive:"About 1 hour from Halekulani",desc:"Surf-town shops, shrimp trucks, shave ice, and sea turtles resting on the sand.",note:"Make a day of it"},
+  zh:{short:"北岸",name:"北岸和哈雷伊瓦（Haleʻiwa）",tag:"一日游",drive:"距 Halekulani 车程约1小时",desc:"冲浪小镇的小店、虾餐车、刨冰，还有在沙滩上晒太阳的海龟。",note:"值得安排一整天"}}
+];
+const COAST=[[21.575,-158.28],[21.58,-158.15],[21.595,-158.105],[21.64,-158.065],[21.68,-158.04],[21.712,-157.99],[21.66,-157.93],[21.61,-157.91],[21.555,-157.85],[21.52,-157.835],[21.47,-157.80],[21.46,-157.76],[21.455,-157.73],[21.42,-157.735],[21.40,-157.72],[21.385,-157.705],[21.33,-157.69],[21.31,-157.65],[21.28,-157.665],[21.265,-157.70],[21.272,-157.72],[21.27,-157.76],[21.258,-157.79],[21.254,-157.808],[21.259,-157.818],[21.266,-157.8225],[21.2725,-157.8255],[21.2775,-157.8305],[21.2805,-157.837],[21.286,-157.845],[21.29,-157.857],[21.305,-157.875],[21.32,-157.92],[21.315,-157.96],[21.305,-158.01],[21.30,-158.11],[21.33,-158.125],[21.39,-158.155],[21.445,-158.19],[21.475,-158.22],[21.53,-158.245]];
+const px=(lat,lon)=>[(lon+158.31)*1000,(21.74-lat)*1000];
+// Waikīkī inset: lon -157.85..-157.79, lat 21.30..21.255 drawn at x 470–690, y 20–185
+const IN={x:690,y:40,w:200,h:150,k:3333};
+const ipx=(lat,lon)=>[IN.x+(lon+157.85)*IN.k,IN.y+(21.30-lat)*IN.k];
+const pos=sp=>sp.wk?ipx(sp.lat,sp.lon):px(sp.lat,sp.lon);
+let photos={},curSpot=0,isOwner=false,assets=null,cat="all";
+const L=(sp,f)=>(sp[lang]&&sp[lang][f])||sp.en[f];
+const visible=()=>SPOTS.map((s,i)=>i).filter(i=>cat==="all"||SPOTS[i].cat===cat||SPOTS[i].venue);
+
+function scene(type){
+  const sky=`<defs><linearGradient id="sky-${type}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--soft)"/><stop offset="1" stop-color="var(--bg)"/></linearGradient></defs><rect width="400" height="300" fill="url(#sky-${type})"/><circle cx="320" cy="70" r="30" fill="var(--glow)"/>`;
+  const sea=`<rect y="200" width="400" height="100" fill="var(--accent)" opacity=".85"/><path d="M0 215 Q50 205 100 215 T200 215 T300 215 T400 215" stroke="var(--surface)" stroke-width="3" fill="none" opacity=".6"/>`;
+  const art={
+    beach:`<rect y="230" width="400" height="70" fill="var(--glow)" opacity=".55"/><path d="M90 230 Q100 150 120 110" stroke="var(--deep)" stroke-width="7" fill="none"/><path d="M120 110 q-40 -5 -60 20 M120 110 q-30 -30 -65 -20 M120 110 q20 -35 55 -30 M120 110 q40 0 55 30" stroke="var(--deep)" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M250 200 L330 120 L330 200" fill="var(--deep)" opacity=".5"/>`,
+    crater:`<path d="M20 200 L120 120 Q150 100 170 115 L200 135 L230 110 Q260 95 290 125 L380 200 Z" fill="var(--deep)"/>`,
+    bay:`<path d="M0 200 Q0 120 90 110 Q150 105 160 200 Z" fill="var(--deep)"/><path d="M400 200 Q400 110 300 105 Q240 105 240 200 Z" fill="var(--deep)" opacity=".85"/><ellipse cx="200" cy="230" rx="90" ry="18" fill="var(--glow)" opacity=".6"/>`,
+    cliff:`<path d="M0 200 L0 90 Q60 70 120 100 L170 200 Z" fill="var(--deep)"/><rect x="62" y="56" width="14" height="34" fill="var(--surface)"/><rect x="60" y="50" width="18" height="8" fill="var(--glow)"/>`,
+    islets:`<path d="M220 200 Q250 140 280 200 Z" fill="var(--deep)"/><path d="M290 200 Q310 160 335 200 Z" fill="var(--deep)" opacity=".85"/><rect y="235" width="400" height="65" fill="var(--glow)" opacity=".5"/>`,
+    harbor:`<path d="M0 200 Q200 185 400 200" fill="var(--deep)" opacity=".4"/><rect x="140" y="178" width="120" height="22" fill="var(--surface)"/><rect x="150" y="172" width="100" height="6" fill="var(--surface)"/>`,
+    wave:`<path d="M60 230 Q120 90 230 120 Q180 130 175 170 Q170 205 230 200 L230 230 Z" fill="var(--deep)" opacity=".85"/>`,
+    valley:`<path d="M0 200 L0 70 L40 60 L60 120 L90 50 L120 130 L150 60 L180 140 L210 200 Z" fill="var(--deep)"/><path d="M190 200 L260 90 L290 140 L330 70 L400 160 L400 200 Z" fill="var(--deep)" opacity=".75"/><rect y="195" width="400" height="105" fill="var(--accent)" opacity=".5"/>`,
+    field:`<rect y="190" width="400" height="110" fill="var(--accent)" opacity=".55"/><path d="M0 220 H400 M0 250 H400 M0 280 H400" stroke="var(--deep)" stroke-width="4" opacity=".4"/><ellipse cx="200" cy="160" rx="34" ry="46" fill="var(--glow)"/><path d="M200 116 l-18 -40 l18 18 l18 -18 z M200 112 l0 -46" stroke="var(--deep)" stroke-width="6" fill="var(--deep)" stroke-linejoin="round"/>`
+  };
+  const noSea=type==="valley"||type==="field";
+  return `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration">${sky}${noSea?"":sea}${art[type]||""}</svg>`;
+}
+
+function islandPath(){
+  const pts=COAST.map(([a,b])=>px(a,b));
+  const mid=(p,q)=>[(p[0]+q[0])/2,(p[1]+q[1])/2];
+  let d="M"+mid(pts[pts.length-1],pts[0]).map(v=>v.toFixed(1)).join(" ");
+  pts.forEach((p,i)=>{const n=pts[(i+1)%pts.length];d+=` Q${p[0].toFixed(1)} ${p[1].toFixed(1)} ${mid(p,n).map(v=>v.toFixed(1)).join(" ")}`});
+  return d+" Z";
+}
+const ISLAND=islandPath();
+function pinSvg(sp,i,vis){
+  const [x,y]=pos(sp),active=i===curSpot;
+  let label="";
+  const LAB={northshore:["start",14,5],dole:["start",14,5],kualoa:["start",14,5],pearl:["end",-14,5],bishop:["middle",0,-16],manoa:["start",14,5],puu:["end",-14,8],kailua:["start",14,5],makapuu:["start",14,5],hanauma:["middle",0,26]};
+  const short=(L(sp,"short")||L(sp,"name")).split(" (")[0].split("（")[0];
+  if(sp.wk?(active||sp.venue):vis){
+    const WKL={halekulani:["end",-12,-8],surf:["start",12,5],aquarium:["end",-12,24],diamondhead:["end",-14,24]};
+    const [a,dx,dy]=sp.wk?WKL[sp.id]:(LAB[sp.id]||["middle",0,-16]);
+    label=`<text class="${active?"on":""}" text-anchor="${a}" x="${dx}" y="${dy}">${esc(short)}</text>`;
+  }
+  return `<g class="pin${sp.venue?" venue":""}${active?" active":""}${vis?"":" dim"}" data-i="${i}" tabindex="${vis?0:-1}" role="button" aria-label="${esc(L(sp,"name"))}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><title>${esc(L(sp,"name"))}</title><circle class="halo" r="22"/><circle class="dot" r="${sp.wk?9:10}"/>${label}</g>`;
+}
+function drawMap(){
+  const vis=new Set(visible());
+  const k=IN.k/1000, tx=IN.x-(158.31-157.85)*IN.k, ty=IN.y-(21.74-21.30)*IN.k;
+  const [rx,ry]=px(21.30,-157.85),[rx2,ry2]=px(21.255,-157.79);
+  let html=`<text class="sea-label" x="40" y="500">${esc(t("ocean"))}</text>
+    <path class="island" d="${ISLAND}"/><text class="sea-label" x="215" y="300" style="font-size:24px">${esc(t("oahu"))}</text>
+    <rect class="inset-frame" x="${rx.toFixed(1)}" y="${ry.toFixed(1)}" width="${(rx2-rx).toFixed(1)}" height="${(ry2-ry).toFixed(1)}"/>
+    <path class="inset-frame" d="M${rx2.toFixed(1)} ${ry.toFixed(1)} L${IN.x+IN.w/2} ${IN.y+IN.h}"/>
+    <defs><clipPath id="inset-clip"><rect x="${IN.x}" y="${IN.y}" width="${IN.w}" height="${IN.h}" rx="10"/></clipPath></defs>
+    <rect class="inset-bg" x="${IN.x}" y="${IN.y}" width="${IN.w}" height="${IN.h}" rx="10"/>
+    <g clip-path="url(#inset-clip)"><path class="island island-in" d="${ISLAND}" transform="matrix(${k} 0 0 ${k} ${tx.toFixed(1)} ${ty.toFixed(1)})"/></g>
+    <text class="inset-label" x="${IN.x+12}" y="${IN.y+22}">${esc(t("wk"))}</text>`;
+  SPOTS.forEach((sp,i)=>{if(!sp.wk)html+=pinSvg(sp,i,vis.has(i))});
+  SPOTS.forEach((sp,i)=>{if(sp.wk)html+=pinSvg(sp,i,vis.has(i))});
+  document.getElementById("map").innerHTML=html;
+}
+function renderChips(){
+  const c=t("cats");
+  document.getElementById("chips").innerHTML=Object.keys(c).map(k=>`<button class="chip" data-cat="${k}" aria-pressed="${k===cat}">${esc(c[k])}</button>`).join("");
+}
+function renderSpot(){
+  const sp=SPOTS[curSpot],ph=photos[sp.id]||[],vis=visible(),idx=vis.indexOf(curSpot);
+  const slides=ph.map(p=>`<div class="slide"><img src="/_blob/${esc(p.id)}" alt="${esc(L(sp,"name"))}" loading="lazy">${isOwner?`<button class="rm" data-rm="${esc(p.id)}" aria-label="Remove photo">×</button>`:""}</div>`).join("")+`<div class="slide">${scene(sp.scene)}</div>`;
+  const n=ph.length+1,note=L(sp,"note");
+  document.getElementById("spot").innerHTML=`<div class="strip" id="strip">${slides}</div>${n>1?`<div class="dots" id="dots">${Array.from({length:n},(_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}
+    <div class="spot-body"><div class="tag">${esc(L(sp,"tag"))}</div><h3>${esc(L(sp,"name"))}</h3><p class="drive">${esc(L(sp,"drive"))}</p><p class="desc">${esc(L(sp,"desc"))}</p>${note?`<span class="note">${esc(note)}</span>`:""}
+    <div class="spot-nav"><button class="btn ghost" data-nav="-1">${esc(t("prev"))}</button><button class="btn ghost" data-nav="1">${esc(t("next"))}</button>
+    <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sp.q)}" target="_blank" rel="noopener">${esc(t("maps"))}</a>
+    <span class="count">${esc(t("of")(idx+1,vis.length))}</span></div><p class="msg" id="photo-msg"></p></div>`;
+  const strip=document.getElementById("strip"),dots=document.getElementById("dots");
+  if(dots)strip.addEventListener("scroll",()=>{const i=Math.round(strip.scrollLeft/strip.clientWidth);[...dots.children].forEach((d,j)=>d.classList.toggle("on",i===j))},{passive:true});
+}
+function selectSpot(i){curSpot=i;drawMap();renderSpot()}
+function step(d){const v=visible();let k=v.indexOf(curSpot);k=(k+d+v.length)%v.length;selectSpot(v[k])}
+const mapEl=document.getElementById("map");
+mapEl.addEventListener("click",e=>{const g=e.target.closest(".pin");if(g&&!g.classList.contains("dim"))selectSpot(+g.dataset.i)});
+mapEl.addEventListener("keydown",e=>{const g=e.target.closest(".pin");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();selectSpot(+g.dataset.i);mapEl.querySelector(`.pin[data-i="${g.dataset.i}"]`).focus()}});
+document.getElementById("chips").addEventListener("click",e=>{
+  const b=e.target.closest("[data-cat]");if(!b)return;cat=b.dataset.cat;
+  const v=visible();if(!v.includes(curSpot)||SPOTS[curSpot].venue)curSpot=v.find(i=>!SPOTS[i].venue)??v[0];
+  renderChips();drawMap();renderSpot();
+});
+document.getElementById("spot").addEventListener("click",e=>{const nb=e.target.closest("[data-nav]");if(nb)step(+nb.dataset.nav)});
+
+function applyLang(){
+  document.documentElement.lang=lang==="zh"?"zh-Hans":"en";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;el.innerHTML=(lang==="zh"&&ZH[k]!=null)?ZH[k]:EN[k]});
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>{const k=el.dataset.i18nPh;el.placeholder=(lang==="zh"&&ZH_PH[k])?ZH_PH[k]:EN_PH[k]});
+  const b=document.getElementById("lang-btn");b.textContent=t("lang");b.lang=lang==="zh"?"en":"zh-Hans";
+  document.title=t("title");
+  renderChips();drawMap();renderSpot();
+}
+document.getElementById("lang-btn").addEventListener("click",()=>{lang=lang==="zh"?"en":"zh";try{localStorage.setItem("mm-lang",lang)}catch(e){}applyLang()});
+applyLang();
+
+// Countdown to 5 pm HST, May 1 2027
+(function(){
+  const target=new Date("2027-05-01T17:00:00-10:00").getTime();
+  const d=document.getElementById("cd-d"),h=document.getElementById("cd-h"),m=document.getElementById("cd-m");
+  function tick(){let s=Math.max(0,Math.floor((target-Date.now())/1000));d.textContent=Math.floor(s/86400);h.textContent=Math.floor(s%86400/3600);m.textContent=Math.floor(s%3600/60)}
+  tick();setInterval(tick,30000);
+})();
+
+// ---------- Guest RSVP form ----------
+const LS_KEY="mei-matthew-rsvp";
+const FORM_FIELDS=["r-name","r-email","r-phone","r-size","r-hotel","r-arr","r-dep","r-wdate","r-wsong","r-diet","r-msg"];
+function rsvpBlock(o){
+  return ["--- RSVP ---","Name: "+o.name,"Email: "+o.email,"Phone: "+o.phone,"Attending: "+o.att,"Party size: "+o.size,"Arriving: "+o.arr,"Leaving: "+o.dep,"Staying at: "+o.hotel,"Events: "+o.events,"Wedding date: "+o.wdate,"Wedding song: "+o.wsong,"Dietary: "+o.diet,"Note: "+o.msg.replace(/\n/g," "),"--- end ---"].join("\n");
+}
+(function restore(){
+  try{const saved=JSON.parse(localStorage.getItem(LS_KEY)||"null");if(!saved)return;
+    FORM_FIELDS.forEach(id=>{if(saved[id]!=null)document.getElementById(id).value=saved[id]});
+    const r=document.querySelector(`input[name="r-att"][value="${saved.att}"]`);if(r)r.checked=true;
+    document.querySelectorAll('input[name="r-ev"]').forEach(c=>{c.checked=(saved.events||[]).includes(c.value)});
+    document.getElementById("form-msg").textContent=t("back");
+  }catch(e){}
+})();
+document.getElementById("rsvp-form").addEventListener("submit",e=>{
+  e.preventDefault();
+  const msg=document.getElementById("form-msg"),val=id=>document.getElementById(id).value.trim();
+  const need=[["r-name","needName"],["r-email","needEmail"],["r-phone","needPhone"]].find(([id])=>!val(id));
+  if(need){msg.textContent=t("need")(t(need[1]));document.getElementById(need[0]).focus();return}
+  if(!/^\S+@\S+\.\S+$/.test(val("r-email"))){msg.textContent=t("badEmail");document.getElementById("r-email").focus();return}
+  if(!settings.rsvpEmail){msg.textContent=t("soon");return}
+  const evs=[...document.querySelectorAll('input[name="r-ev"]:checked')].map(x=>x.value);
+  const o={name:val("r-name"),email:val("r-email"),phone:val("r-phone"),att:document.querySelector('input[name="r-att"]:checked').value,size:val("r-size")||"1",
+    arr:val("r-arr"),dep:val("r-dep"),hotel:val("r-hotel"),events:evs.join(", "),wdate:val("r-wdate"),wsong:val("r-wsong"),diet:val("r-diet"),msg:val("r-msg")};
+  if(o.att==="No"){o.size="0";o.events=""}
+  try{const save={att:o.att,events:evs};FORM_FIELDS.forEach(id=>save[id]=document.getElementById(id).value);localStorage.setItem(LS_KEY,JSON.stringify(save))}catch(err){}
+  const body=t("greet")+"\n\n"+rsvpBlock(o)+"\n";
+  const url="mailto:"+encodeURIComponent(settings.rsvpEmail)+"?subject="+encodeURIComponent("RSVP: "+o.name)+"&body="+encodeURIComponent(body);
+  const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();
+  msg.innerHTML="";
+  const p1=document.createElement("span");p1.textContent=t("sent")(settings.rsvpEmail);
+  const ta=document.createElement("textarea");ta.readOnly=true;ta.value=body;ta.style.cssText="display:block;width:100%;min-height:150px;margin-top:10px;font:14px var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px";
+  msg.append(p1,ta);
+});
+
+</script>
+</body>
+</html>
