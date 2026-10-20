@@ -160,7 +160,14 @@ fieldset.field{border:0;padding:0;margin:0}
 .choice{display:flex;gap:10px}
 .choice label{flex:1;font-weight:500;border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;display:flex;gap:8px;align-items:center;background:var(--bg)}
 .choice input:checked+span{font-weight:600;color:var(--deep)}
-.form-msg{grid-column:1/-1;font-size:14px;color:var(--muted);min-height:20px;margin:0}
+.form-msg{grid-column:1/-1;font-size:15px;color:var(--ink);margin:0}
+.form-msg:empty{display:none}
+.form-msg.warn{background:var(--soft);border-left:4px solid var(--accent);border-radius:8px;padding:12px 14px}
+.confirm{grid-column:1/-1;background:var(--soft);border:2px solid var(--accent);border-radius:12px;padding:20px 22px}
+.confirm h3{font-family:var(--serif);font-weight:400;font-size:26px;margin:0 0 4px}
+.confirm p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.confirm dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:15px}
+.confirm dt{color:var(--muted)} .confirm dd{margin:0;word-break:break-word}
 
 .faq details{border-top:1px solid var(--line);padding:16px 0}
 .faq summary{cursor:pointer;font-weight:600;font-size:17px}
@@ -388,8 +395,8 @@ svg.map .inset-label{fill:var(--deep);font:600 16px var(--sans)}
     <div class="rsvp-wrap">
       <div>
         <p class="lede" style="margin-bottom:16px" data-i18n="rs.lede"><strong>Please reply by January 30, 2027.</strong> Tell us who’s coming, when you land, and where you’re staying, so we can plan the weekend around you.</p>
-        <p class="tip" style="margin-top:0" data-i18n="rs.t1">When you press “Send RSVP,” your email app opens with your answers filled in. Just hit send.</p>
-        <p class="tip" data-i18n="rs.t2"><strong>Plans change?</strong> Come back anytime, update your answers here and send again. Your answers are saved on this device, and we’ll always use your latest reply.</p>
+        <p class="tip" style="margin-top:0" data-i18n="rs.t1">Press “Send RSVP” and your answers come straight to us. You’ll see a confirmation right away.</p>
+        <p class="tip" data-i18n="rs.t2"><strong>Plans change?</strong> Come back anytime, update your answers and send again. Your answers stay filled in on this device, and we’ll always use your latest reply.</p>
         <p class="tip" data-i18n="rs.t3">We’ll post the hotel group rate in February–March 2027 and text or email you when it’s ready. Then come back, book, and update your RSVP with where you’re staying.</p>
       </div>
       <form class="rsvp" id="rsvp-form" novalidate>
@@ -449,8 +456,10 @@ const PALETTES={
   monstera:{name:"Monstera",sw:["#1E3B2C","#3E7D4F","#EAC54F","#E1EAD3"]},
   sunset:{name:"Sunset",sw:["#3A2556","#C2456E","#F4A259","#FCE3D6"]}
 };
-// RSVP replies go to this address.
-const RSVP_EMAIL="";
+// RSVP replies are saved to Mei & Matthew’s Google Form / Sheet.
+const RSVP_EMAIL="mayh320@gmail.com";
+const FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLScKQCjF9B7sx-oQBy_dSARj1ZPJ_Dh_4h1nZTMjfuOiQytQGA/formResponse";
+const FORM_ENTRIES={name:"entry.704231811",att:"entry.732702650",email:"entry.348425086",phone:"entry.1782879450",size:"entry.351618820",hotel:"entry.1732180574",arr:"entry.611175731",dep:"entry.157571885",events:"entry.1337997046",wdate:"entry.1097523708",wsong:"entry.992040904",diet:"entry.1603279629",msg:"entry.867341300"};
 let settings={palette:"sunset",rsvpEmail:RSVP_EMAIL};
 function applyPalette(p){if(PALETTES[p])document.documentElement.setAttribute("data-palette",p);renderPalettes()}
 function renderPalettes(){
@@ -485,8 +494,8 @@ const ZH={
  "st.tip":"小提示：檀香山对短租管理非常严格，只有部分威基基楼盘允许短租。请预订标有许可证或登记号的房源，或位于酒店区的楼盘，以免被取消。",
  "ex.h":"探索欧胡岛","ex.lede":"想多玩几天？选一种玩法，点地图上的地点，滑动看图片，或者一个个浏览我们的推荐。",
  "rs.h":"回复出席","rs.lede":"<strong>请在2027年1月30日前回复。</strong>告诉我们谁会来、什么时候到、住在哪里，方便我们围绕大家安排周末。",
- "rs.t1":"点击“发送回复”后，您的邮件应用会自动打开并填好答案，直接发送即可。",
- "rs.t2":"<strong>计划有变？</strong>随时回来修改并重新发送。您的答案会保存在这台设备上，我们以最新回复为准。",
+ "rs.t1":"点击“发送回复”，您的答案会直接发送给我们，页面上会立即显示确认信息。",
+ "rs.t2":"<strong>计划有变？</strong>随时回来修改并重新发送。您的答案会保留在这台设备上，我们以最新回复为准。",
  "rs.t3":"酒店团体价将于2027年2–3月公布，届时我们会发短信或邮件通知您。到时请回来预订，并更新您的住宿信息。",
  "f.name":"您的姓名","f.att":"您会来吗？","f.yes":"欣然出席","f.no":"很遗憾无法出席","f.email":"电子邮箱","f.phone":"手机号码","f.size":"同行人数","f.hotel":"住宿地点",
  "f.arr":"抵达日期","f.dep":"离开日期","f.ev":"您会参加哪些活动？","f.ev1":"周五欢迎酒会","f.ev2":"周六庆典","f.wed":"如果您已婚，和我们分享您的婚礼吧",
@@ -498,12 +507,12 @@ const ZH={
 const ZH_PH={"ph.name":"例如：张伟和李娜","ph.hotel":"酒店或度假屋（或“还没订”）","ph.song":"歌名和歌手","ph.diet":"过敏、素食等"};
 const MSG={
  en:{needName:"your name",needEmail:"your email",needPhone:"your cell number",need:x=>`Add ${x} so we can reach you.`,badEmail:"Check your email address.",soon:"RSVPs open soon. Please check back in a few days.",
-   sent:e=>`Your email app should open with your RSVP filled in. Just press send. If it didn’t open, copy the text below and email it to ${e}. Mahalo!`,
+   okH:"RSVP received. Mahalo!",okP:"Here’s what you sent. Need to change something? Edit the form and send again; we’ll use your latest reply.",fail:e=>`Sorry, your RSVP didn’t go through. Please check your connection and try again, or email your answers to ${e}.`,sending:"Sending…",yesW:"Joyfully yes",noW:"Can’t make it",
    back:"Welcome back! Your last RSVP is filled in below. Change anything and send it again.",greet:"Aloha Mei & Matthew!",
    prev:"Previous",ocean:"Pacific Ocean",oahu:"O‘ahu",next:"Next",maps:"Open in Maps",of:(a,b)=>`${a} of ${b}`,wk:"Waikīkī",addPhotos:"Add photos",
    cats:{all:"All",hike:"Hikes",ocean:"Ocean & surf",tour:"Tours & day trips",family:"Family & culture"},title:"Mei & Matthew · Ten Years · Honolulu",lang:"中文"},
  zh:{needName:"您的姓名",needEmail:"电子邮箱",needPhone:"手机号码",need:x=>`请填写${x}，方便我们联系您。`,badEmail:"请检查电子邮箱地址。",soon:"回复即将开放，请过几天再来。",
-   sent:e=>`您的邮件应用应该已经打开并填好了回复，直接发送即可。如果没有打开，请复制下面的内容发送到 ${e}。谢谢！`,
+   okH:"已收到您的回复，谢谢！",okP:"以下是您提交的内容。需要修改？直接改表格并重新发送，我们以最新回复为准。",fail:e=>`抱歉，回复没有发送成功。请检查网络后重试，或将答案发邮件至 ${e}。`,sending:"发送中…",yesW:"欣然出席",noW:"无法出席",
    back:"欢迎回来！下面已填好您上次的回复，修改后重新发送即可。",greet:"Aloha Mei & Matthew！",
    prev:"上一个",ocean:"太平洋",oahu:"欧胡岛",next:"下一个",maps:"在地图中打开",of:(a,b)=>`第 ${a} 个，共 ${b} 个`,wk:"威基基",addPhotos:"添加照片",
    cats:{all:"全部",hike:"徒步",ocean:"海洋与冲浪",tour:"游览与一日游",family:"亲子与文化"},title:"Mei & Matthew · 结婚十周年 · 檀香山",lang:"English"}
@@ -684,25 +693,35 @@ function rsvpBlock(o){
     document.getElementById("form-msg").textContent=t("back");
   }catch(e){}
 })();
-document.getElementById("rsvp-form").addEventListener("submit",e=>{
+document.getElementById("rsvp-form").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=document.getElementById("form-msg"),val=id=>document.getElementById(id).value.trim();
+  const warn=txt=>{msg.className="form-msg warn";msg.textContent=txt};
   const need=[["r-name","needName"],["r-email","needEmail"],["r-phone","needPhone"]].find(([id])=>!val(id));
-  if(need){msg.textContent=t("need")(t(need[1]));document.getElementById(need[0]).focus();return}
-  if(!/^\S+@\S+\.\S+$/.test(val("r-email"))){msg.textContent=t("badEmail");document.getElementById("r-email").focus();return}
-  if(!settings.rsvpEmail){msg.textContent=t("soon");return}
-  const evs=[...document.querySelectorAll('input[name="r-ev"]:checked')].map(x=>x.value);
+  if(need){warn(t("need")(t(need[1])));document.getElementById(need[0]).focus();return}
+  if(!/^\S+@\S+\.\S+$/.test(val("r-email"))){warn(t("badEmail"));document.getElementById("r-email").focus();return}
+  const evBoxes=[...document.querySelectorAll('input[name="r-ev"]:checked')];
+  const evs=evBoxes.map(x=>x.value);
   const o={name:val("r-name"),email:val("r-email"),phone:val("r-phone"),att:document.querySelector('input[name="r-att"]:checked').value,size:val("r-size")||"1",
     arr:val("r-arr"),dep:val("r-dep"),hotel:val("r-hotel"),events:evs.join(", "),wdate:val("r-wdate"),wsong:val("r-wsong"),diet:val("r-diet"),msg:val("r-msg")};
   if(o.att==="No"){o.size="0";o.events=""}
-  try{const save={att:o.att,events:evs};FORM_FIELDS.forEach(id=>save[id]=document.getElementById(id).value);localStorage.setItem(LS_KEY,JSON.stringify(save))}catch(err){}
-  const body=t("greet")+"\n\n"+rsvpBlock(o)+"\n";
-  const url="mailto:"+encodeURIComponent(settings.rsvpEmail)+"?subject="+encodeURIComponent("RSVP: "+o.name)+"&body="+encodeURIComponent(body);
-  const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();
-  msg.innerHTML="";
-  const p1=document.createElement("span");p1.textContent=t("sent")(settings.rsvpEmail);
-  const ta=document.createElement("textarea");ta.readOnly=true;ta.value=body;ta.style.cssText="display:block;width:100%;min-height:150px;margin-top:10px;font:14px var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px";
-  msg.append(p1,ta);
+  const body=new URLSearchParams();
+  Object.entries(FORM_ENTRIES).forEach(([k,id])=>body.append(id,k==="msg"&&lang==="zh"?("[中文] "+o.msg).trim():o[k]));
+  const btn=e.target.querySelector('button[type="submit"]'),btnTxt=btn.textContent;
+  btn.disabled=true;btn.textContent=t("sending");msg.className="form-msg";msg.textContent="";
+  try{
+    await fetch(FORM_URL,{method:"POST",mode:"no-cors",body});
+    try{const save={att:o.att,events:evs};FORM_FIELDS.forEach(id=>save[id]=document.getElementById(id).value);localStorage.setItem(LS_KEY,JSON.stringify(save))}catch(err){}
+    const lab=id=>{const l=document.querySelector(`label[for="${id}"]`);return l?l.textContent:id};
+    const rows=[[lab("r-name"),o.name],[document.querySelector('[data-i18n="f.att"]').textContent,o.att==="Yes"?t("yesW"):t("noW")],[lab("r-email"),o.email],[lab("r-phone"),o.phone]];
+    if(o.att==="Yes"){rows.push([lab("r-size"),o.size],[lab("r-arr"),o.arr],[lab("r-dep"),o.dep],[lab("r-hotel"),o.hotel],[document.querySelector('[data-i18n="f.ev"]').textContent,evBoxes.map(x=>x.nextElementSibling.textContent).join(", ")])}
+    rows.push([lab("r-wdate"),o.wdate],[lab("r-wsong"),o.wsong],[lab("r-diet"),o.diet],[lab("r-msg"),o.msg]);
+    msg.className="form-msg confirm";
+    msg.innerHTML=`<h3>${esc(t("okH"))}</h3><p>${esc(t("okP"))}</p><dl>${rows.filter(r=>r[1]).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`;
+  }catch(err){
+    warn(t("fail")(RSVP_EMAIL));
+  }finally{btn.disabled=false;btn.textContent=btnTxt}
+  msg.scrollIntoView({behavior:"smooth",block:"nearest"});
 });
 
 </script>
