@@ -74,9 +74,12 @@ header.hero{background:var(--deep);color:var(--on-deep);position:relative;overfl
 .hero svg.tide{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:80px;display:block}
 
 main{max-width:1080px;margin:0 auto;padding:0 20px}
-section{padding:72px 0;border-bottom:1px solid var(--line)}
-section:last-of-type{border-bottom:0}
-h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,44px);margin:0 0 10px;line-height:1.1}
+section{padding:80px 0;position:relative}
+/* Alternate full-width tinted bands so sections stand apart */
+main>section:nth-of-type(odd){background:var(--soft);box-shadow:0 0 0 100vmax var(--soft);clip-path:inset(0 -100vmax)}
+main>section:nth-of-type(odd) .ph{background:var(--surface)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,54px);margin:0 0 12px;line-height:1.05}
+section>h2::before{content:"";display:block;width:56px;height:5px;border-radius:3px;background:var(--accent);margin-bottom:18px}
 h3.sub{font-family:var(--serif);font-weight:400;font-size:26px;margin:40px 0 16px}
 .lede{color:var(--muted);max-width:62ch;margin:0 0 36px}
 
@@ -160,6 +163,7 @@ fieldset.field{border:0;padding:0;margin:0}
 .choice{display:flex;gap:10px}
 .choice label{flex:1;font-weight:500;border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;display:flex;gap:8px;align-items:center;background:var(--bg)}
 .choice input:checked+span{font-weight:600;color:var(--deep)}
+.field .hint{font-size:13px;color:var(--muted)}
 .form-msg{grid-column:1/-1;font-size:15px;color:var(--ink);margin:0}
 .form-msg:empty{display:none}
 .form-msg.warn{background:var(--soft);border-left:4px solid var(--accent);border-radius:8px;padding:12px 14px}
@@ -218,7 +222,8 @@ footer .serif{font-family:var(--serif);font-size:26px;color:var(--ink);display:b
   .timeline li{grid-template-columns:1fr;gap:6px}
   .todo{columns:1}
   .explore,.contacts{grid-template-columns:1fr}
-  section{padding:56px 0}
+  section{padding:60px 0}
+  h2{font-size:40px}
 }
 
 .lang{margin-left:8px;background:transparent;border:1px solid rgba(255,255,255,.45);color:var(--on-deep);border-radius:999px;padding:5px 12px;font:600 14px var(--sans);cursor:pointer;white-space:nowrap}
@@ -263,7 +268,7 @@ svg.map .inset-label{fill:var(--deep);font:600 16px var(--sans)}
   <div class="inner">
     <div>
       <p class="names">Mei He &amp; Matthew Forquer</p>
-      <h1 data-i18n="hero.h1">Ten years married. One more aloha.</h1>
+      <h1 data-i18n="hero.h1">Ten years married. One BIG aloha.</h1>
       <p class="when" data-i18n="hero.when">Saturday, May 1, 2027 · Halekulani, Waikīkī</p>
     </div>
     <div class="countdown" aria-label="Countdown">
@@ -280,7 +285,7 @@ svg.map .inset-label{fill:var(--deep);font:600 16px var(--sans)}
 <main>
   <section id="weekend">
     <h2 data-i18n="wk.h">The weekend</h2>
-    <p class="lede" data-i18n="wk.lede">Ten years ago we said yes. This time we just want everyone we love in one place, by the ocean. Our celebration falls on May 1, Lei Day in Hawai‘i, so come ready for flowers. Join us for as much or as little of the weekend as you can.</p>
+    <p class="lede" data-i18n="wk.lede">Ten years ago we said yes. This time we want everyone we love together with us by the ocean. Our celebration falls on May 1, Lei Day in Hawai‘i, so come ready for flowers! Join us for as much or as little of the weekend as you can.</p>
     <ol class="timeline">
       <li>
         <div class="day"><span data-i18n="wk.fri">Friday</span><small data-i18n="wk.fri.d">April 30</small></div>
@@ -288,7 +293,7 @@ svg.map .inset-label{fill:var(--deep);font:600 16px var(--sans)}
       </li>
       <li class="main-event">
         <div class="day"><span data-i18n="wk.sat">Saturday</span><small data-i18n="wk.sat.d">May 1</small></div>
-        <div><h3 data-i18n="wk.sat.h">The anniversary celebration</h3><p data-i18n="wk.sat.p"><strong>5–10 pm · Hau Terrace Lanai at Halekulani.</strong> Dinner, a few words, and dancing as the sun goes down over Waikīkī (sunset is around 6:50 pm in early May).</p></div>
+        <div><h3 data-i18n="wk.sat.h">The anniversary celebration</h3><p data-i18n="wk.sat.p"><strong>5–10 pm · Hau Terrace Lanai at Halekulani.</strong> A vow renewal, a few words, then dinner and dancing 😎 as the sun goes down over Waikīkī (sunset is around 6:50 pm in early May).</p></div>
       </li>
     </ol>
   </section>
@@ -409,6 +414,7 @@ svg.map .inset-label{fill:var(--deep);font:600 16px var(--sans)}
         </fieldset>
         <div class="field"><label for="r-email" data-i18n="f.email">Email</label><input id="r-email" type="email" required autocomplete="email"></div>
         <div class="field"><label for="r-phone" data-i18n="f.phone">Cell phone</label><input id="r-phone" type="tel" required autocomplete="tel" placeholder="(555) 555-5555"></div>
+        <div class="field full"><label for="r-addr" data-i18n="f.addr">Mailing address (optional)</label><textarea id="r-addr" rows="2" autocomplete="street-address" style="min-height:64px"></textarea><span class="hint" data-i18n="f.addr.h">We’ll send you a picture of our faces if you want one 😄</span></div>
         <div class="field"><label for="r-size" data-i18n="f.size">Number in your party</label><input id="r-size" type="number" min="1" value="2"></div>
         <div class="field"><label for="r-hotel" data-i18n="f.hotel">Where you’re staying</label><input id="r-hotel" placeholder="Hotel or rental (or “not booked yet”)" data-i18n-ph="ph.hotel"></div>
         <div class="field"><label for="r-arr" data-i18n="f.arr">Arriving</label><input id="r-arr" type="date" min="2027-04-20" max="2027-05-10"></div>
@@ -472,12 +478,12 @@ renderPalettes();
 // ---------- Language ----------
 const ZH={
  "nav.weekend":"周末安排","nav.travel":"交通指南","nav.stay":"住宿","nav.explore":"探索欧胡岛","nav.rsvp":"回复出席","nav.faq":"常见问题",
- "hero.h1":"结婚十年，再续一份 Aloha。","hero.when":"2027年5月1日（星期六）· 威基基 Halekulani 酒店",
+ "hero.h1":"结婚十年，送上一个大大的 Aloha！","hero.when":"2027年5月1日（星期六）· 威基基 Halekulani 酒店",
  "cd.d":"天","cd.h":"小时","cd.m":"分钟",
  "wk.h":"周末安排",
- "wk.lede":"十年前，我们说了“我愿意”。这一次，我们只想把所有爱的人聚在一起，在海边。我们的庆典恰逢5月1日夏威夷“花环节”（Lei Day），欢迎戴上花环一起来！周末的活动随意参加，能来多少都好。",
+ "wk.lede":"十年前，我们说了“我愿意”。这一次，我们希望所有爱的人都能和我们一起相聚海边。我们的庆典恰逢5月1日夏威夷“花环节”（Lei Day），欢迎戴上花环一起来！周末的活动随意参加，能来多少都好。",
  "wk.fri":"星期五","wk.fri.d":"4月30日","wk.fri.h":"欢迎酒会","wk.fri.p":"<span class=\"ph\">时间和地点待定</span>。下了飞机直接来吧，穿拖鞋也没关系。",
- "wk.sat":"星期六","wk.sat.d":"5月1日","wk.sat.h":"十周年纪念庆典","wk.sat.p":"<strong>下午5点至晚上10点 · Halekulani 酒店 Hau Terrace Lanai。</strong>晚餐、几句心里话，在威基基的日落中跳舞（5月初日落时间约为傍晚6:50）。",
+ "wk.sat":"星期六","wk.sat.d":"5月1日","wk.sat.h":"十周年纪念庆典","wk.sat.p":"<strong>下午5点至晚上10点 · Halekulani 酒店 Hau Terrace Lanai。</strong>重温婚礼誓言、几句心里话，然后在威基基的日落中共享晚餐、跳舞 😎（5月初日落时间约为傍晚6:50）。",
  "tr.h":"交通指南","tr.lede":"订机票和抵达后出行需要的所有信息。",
  "tr.fly.h":"航班","tr.fly.p":"飞往檀香山丹尼尔·井上国际机场（HNL）。机场距 Halekulani 约9英里（约14公里），视交通情况车程约20–40分钟。4月底到5月是旅游旺季，建议尽早订票。",
  "tr.go.h":"当地出行","tr.go.p":"机场有出租车和网约车，威基基步行就很方便。如果想去北岸或凯卢阿，建议租车一两天。威基基的酒店停车通常按晚收费。",
@@ -497,7 +503,7 @@ const ZH={
  "rs.t1":"点击“发送回复”，您的答案会直接发送给我们，页面上会立即显示确认信息。",
  "rs.t2":"<strong>计划有变？</strong>随时回来修改并重新发送。您的答案会保留在这台设备上，我们以最新回复为准。",
  "rs.t3":"酒店团体价将于2027年2–3月公布，届时我们会发短信或邮件通知您。到时请回来预订，并更新您的住宿信息。",
- "f.name":"您的姓名","f.att":"您会来吗？","f.yes":"欣然出席","f.no":"很遗憾无法出席","f.email":"电子邮箱","f.phone":"手机号码","f.size":"同行人数","f.hotel":"住宿地点",
+ "f.name":"您的姓名","f.att":"您会来吗？","f.yes":"欣然出席","f.no":"很遗憾无法出席","f.email":"电子邮箱","f.phone":"手机号码","f.addr":"邮寄地址（选填）","f.addr.h":"想要的话，我们会给您寄一张我们俩的照片 😄","f.size":"同行人数","f.hotel":"住宿地点",
  "f.arr":"抵达日期","f.dep":"离开日期","f.ev":"您会参加哪些活动？","f.ev1":"周五欢迎酒会","f.ev2":"周六庆典","f.wed":"如果您已婚，和我们分享您的婚礼吧",
  "f.wdate":"结婚日期","f.wsong":"您的婚礼歌曲","f.diet":"饮食需求","f.msg":"给 Mei 和 Matthew 的话","f.send":"发送回复",
  "fq.h":"常见问题","fq.q1":"应该穿什么？","fq.a1":"穿上让你开心的颜色！","fq.q2":"可以带孩子吗？","fq.a2":"非常欢迎！我们想和所有我们爱的人分享我们最爱的度假地和体验，小朋友当然也包括在内。",
@@ -681,7 +687,7 @@ applyLang();
 
 // ---------- Guest RSVP form ----------
 const LS_KEY="mei-matthew-rsvp";
-const FORM_FIELDS=["r-name","r-email","r-phone","r-size","r-hotel","r-arr","r-dep","r-wdate","r-wsong","r-diet","r-msg"];
+const FORM_FIELDS=["r-name","r-email","r-phone","r-addr","r-size","r-hotel","r-arr","r-dep","r-wdate","r-wsong","r-diet","r-msg"];
 function rsvpBlock(o){
   return ["--- RSVP ---","Name: "+o.name,"Email: "+o.email,"Phone: "+o.phone,"Attending: "+o.att,"Party size: "+o.size,"Arriving: "+o.arr,"Leaving: "+o.dep,"Staying at: "+o.hotel,"Events: "+o.events,"Wedding date: "+o.wdate,"Wedding song: "+o.wsong,"Dietary: "+o.diet,"Note: "+o.msg.replace(/\n/g," "),"--- end ---"].join("\n");
 }
@@ -702,11 +708,16 @@ document.getElementById("rsvp-form").addEventListener("submit",async e=>{
   if(!/^\S+@\S+\.\S+$/.test(val("r-email"))){warn(t("badEmail"));document.getElementById("r-email").focus();return}
   const evBoxes=[...document.querySelectorAll('input[name="r-ev"]:checked')];
   const evs=evBoxes.map(x=>x.value);
-  const o={name:val("r-name"),email:val("r-email"),phone:val("r-phone"),att:document.querySelector('input[name="r-att"]:checked').value,size:val("r-size")||"1",
+  const o={name:val("r-name"),email:val("r-email"),phone:val("r-phone"),addr:val("r-addr"),att:document.querySelector('input[name="r-att"]:checked').value,size:val("r-size")||"1",
     arr:val("r-arr"),dep:val("r-dep"),hotel:val("r-hotel"),events:evs.join(", "),wdate:val("r-wdate"),wsong:val("r-wsong"),diet:val("r-diet"),msg:val("r-msg")};
   if(o.att==="No"){o.size="0";o.events=""}
   const body=new URLSearchParams();
-  Object.entries(FORM_ENTRIES).forEach(([k,id])=>body.append(id,k==="msg"&&lang==="zh"?("[中文] "+o.msg).trim():o[k]));
+  body.append("emailAddress",o.email); // fills Google Forms’ “Collect email addresses” field if it’s on
+  // Until the Google Form has its own “Mailing address” question, the address is added to the Note.
+  const ADDR_ENTRY="";
+  const noteParts=[lang==="zh"?"[中文]":"",o.msg,(!ADDR_ENTRY&&o.addr)?"Mailing address: "+o.addr.replace(/\s*\n\s*/g,", "):""].filter(Boolean);
+  Object.entries(FORM_ENTRIES).forEach(([k,id])=>body.append(id,k==="msg"?noteParts.join(" | "):o[k]));
+  if(ADDR_ENTRY)body.append(ADDR_ENTRY,o.addr);
   const btn=e.target.querySelector('button[type="submit"]'),btnTxt=btn.textContent;
   btn.disabled=true;btn.textContent=t("sending");msg.className="form-msg";msg.textContent="";
   try{
@@ -715,7 +726,7 @@ document.getElementById("rsvp-form").addEventListener("submit",async e=>{
     const lab=id=>{const l=document.querySelector(`label[for="${id}"]`);return l?l.textContent:id};
     const rows=[[lab("r-name"),o.name],[document.querySelector('[data-i18n="f.att"]').textContent,o.att==="Yes"?t("yesW"):t("noW")],[lab("r-email"),o.email],[lab("r-phone"),o.phone]];
     if(o.att==="Yes"){rows.push([lab("r-size"),o.size],[lab("r-arr"),o.arr],[lab("r-dep"),o.dep],[lab("r-hotel"),o.hotel],[document.querySelector('[data-i18n="f.ev"]').textContent,evBoxes.map(x=>x.nextElementSibling.textContent).join(", ")])}
-    rows.push([lab("r-wdate"),o.wdate],[lab("r-wsong"),o.wsong],[lab("r-diet"),o.diet],[lab("r-msg"),o.msg]);
+    rows.push([lab("r-addr"),o.addr],[lab("r-wdate"),o.wdate],[lab("r-wsong"),o.wsong],[lab("r-diet"),o.diet],[lab("r-msg"),o.msg]);
     msg.className="form-msg confirm";
     msg.innerHTML=`<h3>${esc(t("okH"))}</h3><p>${esc(t("okP"))}</p><dl>${rows.filter(r=>r[1]).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`;
   }catch(err){
