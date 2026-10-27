@@ -714,7 +714,7 @@ document.getElementById("rsvp-form").addEventListener("submit",async e=>{
   const body=new URLSearchParams();
   body.append("emailAddress",o.email); // fills Google Forms’ “Collect email addresses” field if it’s on
   // Until the Google Form has its own “Mailing address” question, the address is added to the Note.
-  const ADDR_ENTRY="";
+  const ADDR_ENTRY="entry.1675173806";
   const noteParts=[lang==="zh"?"[中文]":"",o.msg,(!ADDR_ENTRY&&o.addr)?"Mailing address: "+o.addr.replace(/\s*\n\s*/g,", "):""].filter(Boolean);
   Object.entries(FORM_ENTRIES).forEach(([k,id])=>body.append(id,k==="msg"?noteParts.join(" | "):o[k]));
   if(ADDR_ENTRY)body.append(ADDR_ENTRY,o.addr);
